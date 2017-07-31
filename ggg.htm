@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<style type="text/css">
+.icon_2{
+	float:right;
+	right:100px;
+}
+.icon_1{
+	position: relative;
+	top: 30px;
+}
+.navbar{
+position:fixed;
+bottom:0px;
+left: 0;
+display:flex;
+display: -webkit-flex;
+width:100%;
+background: rgba(0, 0, 0, .8);
+z-index: 10
+}
+.navbar a{
+display:inline-block;
+height:50px;
+line-height:50px;
+flex: 1;
+text-decoration:none;
+font-size:12px;
+color:#fff;
+border-right: 1px solid #fff;
+padding-left: 20px;
+text-align:center;
+}
+.navbar a:last-of-type{
+border:none;
+}
+.navbar .bar-icon{
+position:absolute;
+   top: 15px;
+   left: 50%;
+   margin-left: -35px;
+}
+.show_pic{
+	width: 300px;
+	height: 100%;
+	border: 1px solid #fff;
+	margin: 50px auto;
+	z-index: 1;
+}
+#rrr1,#rrr2,#rrr3{
+	width: 202px;
+	height: 140px;
+	border: 2px solid #666;
+	padding: 0;
+	margin: 20px auto;
+	text-align: center;
+	line-height: 130px;
+	position:relative;
+	z-index: 1
+}
+#rrr1 button{
+	text-align: center;
+
+}
+#choose1{
+	top:0px;
+	z-index:6;
+}
+#choose2{
+	top:0px;
+}
+#choose3{
+	top:0px;
+
+}
+.choose{
+	position: absolute;
+	right: 10%;
+
+}
+p{
+	text-align: center;
+	color: #666;	
+	font-family: sans-serif;
+	font-weight: bold;
+	width: 100%;
+	height: 20px;
+}
+.top{
+	position: relative;
+}
+.shadow{
+	background-color: #778899;
+	opacity: 0.5;
+}
+.gif{
+	position: fixed;
+	top:40%;
+	left: 45%;
+	z-index: 20;
+	display: none;
+}
+#rrr1 img{
+	z-index: 20;
+	vertical-align: middle;
+}
+</style>
+</head>
+<body>
+	<img src="images/jindu.gif" width="60" height="60" id="gif" class="gif">
+	<div id="addshadow">
+		<div class="select_1">
+				<form action="" method="post" name="venue-id">
+					<select  >
+						<option selected="selected">主场</option>
+						<option>奇瑞展区</option>
+						<option>比亚迪展区</option>
+						<option>--休息室--</option>
+						<option>宠物区</option>
+						<option>休息区</option>
+			
+			
+					
+					</select>
+				</form>
+		</div>
+		<div class="icon_1">
+				<button type="button" class="btn btn-default" aria-label="OK">
+		 			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				</button>
+				已被选择张数：<span class="select-number">1</span>张
+		</div>
+		<div class="icon_2">
+			<button type="button" class="btn btn-default" aria-label="trash" id="delete">
+		  		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			</button>
+		</div>
+			<!--图片展示-->
+		<div class="show_pic">
+			<div class="top">
+				<div id="rrr1">
+					<button type="button" class="btn btn-default" aria-label="plus" id="fileSelect1" >
+		 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</div>
+				<p id="warning0">请选择照片</p>
+				<div id="choose1" class="choose"><input type="checkbox" name="choose" ></div>
+			</div>
+			<div class="top">
+				<div id="rrr2">
+					<button type="button" class="btn btn-default" aria-label="plus" id="fileSelect2" >
+		 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</div>
+				<p id="warning1">请选择照片</p>
+			<div id="choose2" class="choose"><input type="checkbox" name="choose" ></div>
+			</div>
+			<div class="top">
+			<div id="rrr3">
+				<button type="button" class="btn btn-default" aria-label="plus" id="fileSelect3" >
+		 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				</button>
+			</div>
+			<p id="warning2">请选择照片</p>
+			<div id="choose3" class="choose"><input type="checkbox" name="choose" ></div>
+			</div>
+		</div>	
+		<div class="navbar">
+		    <a href="" >相片</a>
+		    <a href="" >事件</a>
+		    <a href="" >子场</a>
+		    <a href="" >主场</a>
+		</div>
+		<form  enctype="multipart/form-data" method="post" id="pic0">
+			<input type="file" id="fileElem1" name='p' multiple accept="image/*" style="display:none;"  onchange="uploadImage(this, 0)"/>
+		</form>
+		<form  enctype="multipart/form-data" method="post" id="pic1">
+			<input type="file" id="fileElem2" name='p' multiple accept="image/*" style="display:none;" onchange="uploadImage(this,1)"/>
+		</form>
+		<form enctype="multipart/form-data" method="post" id="pic2">
+			<input type="file" id="fileElem3" name='p' multiple accept="image/*" style="display:none;" onchange="uploadImage(this,2)"/>
+		</form>
+</body>
+	<script type="text/javascript" src="js/show1.js"></script>
+	<script type="text/javascript" src="js/show.js"></script>
+	<script type="text/javascript" src="js/day3.js"></script>
+
+</html>
